@@ -1,1 +1,27 @@
+import re
+import string
 
+txt = open('../PyParagraph/raw_data/paragraph_1.txt', 'r')
+textfile =txt.read()
+txt.close()
+sentences = textfile.split('. ')
+sentence_count = len(sentences)
+avg_sent = 0 
+for sentence in sentences:
+  avg_sent += len(sentence.split())
+avg_sent = avg_sent/len(sentences)
+
+avg_lett = 0
+words = textfile.replace('\n',' ').replace('.',' ').replace('>',' ').split()
+for word in words:
+  avg_lett += len(word.strip())
+avg_lett = avg_lett/len(words)
+
+num_wordcount = len(words)
+
+print('Paragraph Analysis')
+print('----------------------------------')
+print('Approximate Word Count:', num_wordcount)
+print('Approximate Sentence Count:', sentence_count)
+print('Average Letter Count:', avg_lett)
+print('Average sentence length:', avg_sent)
